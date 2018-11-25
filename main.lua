@@ -130,7 +130,6 @@ function spawnRedFolk(x, y, vx, vy)
 		end,
 	}
 	table.insert(folks.all, f)
-	table.insert(folks.r, f)
 end
 
 function spawnGreenFolk(x, y, vx, vy)
@@ -145,7 +144,6 @@ function spawnGreenFolk(x, y, vx, vy)
 		end,
 	}
 	table.insert(folks.all, f)
-	table.insert(folks.g, f)
 end
 
 function spawnBlueFolk(x, y, vx, vy)
@@ -160,7 +158,6 @@ function spawnBlueFolk(x, y, vx, vy)
 		end,
 	}
 	table.insert(folks.all, f)
-	table.insert(folks.b, f)
 end
 
 function spawnFolk()
@@ -204,9 +201,6 @@ function love.load()
 	time = 0
 	folks = {}
 	folks.all = {}
-	folks.r = {}
-	folks.g = {}
-	folks.b = {}
 	spawnFolks(1500)
 	spawnMate()
 end
