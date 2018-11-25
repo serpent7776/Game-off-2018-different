@@ -8,7 +8,20 @@ local player = {
 	vmax = 128,
 }
 
-local time
+local banner = {
+	text = {},
+	bg = {
+		r = 0.26,
+		g = 0.26,
+		b = 0.26,
+	},
+	t = 0,
+	t_out = 0,
+	a = 0,
+	v = false,
+}
+
+local game_time
 local folks
 local mate
 local C
@@ -34,6 +47,14 @@ function colour(ct, x)
 	end
 end
 
+function makeBanner(text, t)
+	banner.text = text
+	banner.t = -1
+	banner.t_out = t
+	banner.a = 0
+	banner.v = true
+end
+
 function updatePlayer(dt)
 	player.ct = (player.ct + dt) % 4
 	player.c.r = colour(player.ct, 1)
@@ -52,6 +73,21 @@ function updateMate(dt)
 	local fy = -dx / dd * player.vmax
 	mate.vx = fx * 0.25
 	mate.vy = fy * 0.25
+end
+
+function updateBanner(dt)
+	if not banner.v then
+		return
+	end
+	banner.t = banner.t + 1 * dt
+	if banner.t < 0 then
+		banner.a = banner.a + 1 * dt
+	elseif banner.t > banner.t_out then
+		banner.a = banner.a - 1 * dt
+	end
+	if banner.t > banner.t_out + 1 then
+		banner.v = false
+	end
 end
 
 function distance(a, b)
@@ -86,6 +122,14 @@ function drawFolks()
 	for i, folk in ipairs(folks.all) do
 		love.graphics.setColor(folk.c.r * C, folk.c.g * C, folk.c.b * C, 1 * C)
 		love.graphics.circle('fill', folk.x - player.x, folk.y - player.y, 9)
+	end
+end
+
+function drawBanner()
+	if banner.v then
+		local b = banner
+		love.graphics.setColor(b.bg.r * C, b.bg.g * C, b.bg.b * C, b.a * 0.75 * C)
+		love.graphics.rectangle('fill', 0, 400, 600, 200)
 	end
 end
 
@@ -198,7 +242,7 @@ end
 function love.load()
 	local major = love.getVersion()
 	C = major < 1 and 255 or 1
-	time = 0
+	game_time = 0
 	folks = {}
 	folks.all = {}
 	spawnFolks(1500)
@@ -206,7 +250,7 @@ function love.load()
 end
 
 function love.update(dt)
-	time = time + dt
+	game_time = game_time + dt
 	updatePlayer(dt * 0.3)
 	updateMate(dt)
 	move(player, dt)
@@ -215,6 +259,7 @@ function love.update(dt)
 		checkHit(player, folk)
 	end
 	move(mate, dt)
+	updateBanner(dt)
 end
 
 function love.draw()
@@ -223,4 +268,6 @@ function love.draw()
 	drawFolks()
 	drawMate()
 	drawPlayer()
+	love.graphics.translate(-300, -300)
+	drawBanner()
 end
