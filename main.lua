@@ -61,7 +61,7 @@ function distance(a, b)
 end
 
 function checkHit(p, f)
-	if distance(p, f) < 20 then
+	if distance(p, f) < 20 and not f.likes(p) then
 		local dx = p.x - f.x
 		local dy = p.y - f.y
 		local dd = math.sqrt(dx * dx + dy * dy)
@@ -125,6 +125,9 @@ function spawnRedFolk(x, y, vx, vy)
 		vx = vx,
 		vy = vy,
 		c = {r = 1, g = 0, b = 0},
+		likes = function(o)
+			return o.c.r > 0.5 and o.c.g < 0.5 and o.c.b < 0.5
+		end,
 	}
 	table.insert(folks.all, f)
 	table.insert(folks.r, f)
@@ -137,6 +140,9 @@ function spawnGreenFolk(x, y, vx, vy)
 		vx = vx,
 		vy = vy,
 		c = {r = 0, g = 1, b = 0},
+		likes = function(o)
+			return o.c.r < 0.5 and (o.c.g > 0.5 or o.c.b > 0.5)
+		end,
 	}
 	table.insert(folks.all, f)
 	table.insert(folks.g, f)
@@ -149,6 +155,9 @@ function spawnBlueFolk(x, y, vx, vy)
 		vx = vx,
 		vy = vy,
 		c = {r = 0, g = 0, b = 1},
+		likes = function(o)
+			return o.c.r < 0.5 and (o.c.g > 0.5 or o.c.b > 0.5)
+		end,
 	}
 	table.insert(folks.all, f)
 	table.insert(folks.b, f)
