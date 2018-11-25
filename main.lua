@@ -5,6 +5,7 @@ local player = {
 	vy = 0,
 	ct = 0,
 	c = {r = 0, g = 0, b = 0},
+	hit = 0,
 	vmax = 128,
 }
 
@@ -106,6 +107,7 @@ function checkHit(p, f)
 		local fy = dy / dd * 20
 		player.x = player.x + fx
 		player.y = player.y + fy
+		player.hit = player.hit + 1
 	end
 end
 
@@ -113,7 +115,9 @@ function checkFoundMate()
 	if distance(player, mate) < 20 and not foundMate then
 		local text = {
 			{1 * C, 1 * C, 1 * C, 1 * C},
-			'Congratulations',
+			'Congratulations\n',
+			{1 * C, 1 * C, 1 * C, 1 * C},
+			'You\'ve been pushed ' .. player.hit .. ' times',
 		}
 		makeBanner(text, 5)
 		foundMate = true
