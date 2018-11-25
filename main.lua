@@ -215,8 +215,8 @@ end
 
 function love.draw()
 	drawBackground()
-	drawFolks()
 	love.graphics.translate(300, 300)
+	drawFolks()
 	drawMate()
 	drawPlayer()
 end
