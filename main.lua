@@ -130,6 +130,8 @@ function drawBanner()
 		local b = banner
 		love.graphics.setColor(b.bg.r * C, b.bg.g * C, b.bg.b * C, b.a * 0.75 * C)
 		love.graphics.rectangle('fill', 0, 400, 600, 200)
+		love.graphics.setColor(C, C, C, C * b.a)
+		love.graphics.printf(banner.text, 0, 450, 600, 'center')
 	end
 end
 
