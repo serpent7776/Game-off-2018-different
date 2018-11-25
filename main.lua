@@ -11,6 +11,7 @@ local player = {
 local time
 local folks
 local mate
+local C
 
 function drawBackground()
 	for y = 0, 9 do
@@ -19,7 +20,7 @@ function drawBackground()
 			local rb = n % 2 == 0 and 0.2 or 0
 			local dx = player.x % 150
 			local dy = player.y % 150
-			love.graphics.setColor(rb, 0.5, rb, 1)
+			love.graphics.setColor(rb * C, 0.5 * C, rb * C, 1 * C)
 			love.graphics.rectangle('fill', x * 75 - dx, y * 75 - dy, 75, 75)
 		end
 	end
@@ -72,18 +73,18 @@ function checkHit(p, f)
 end
 
 function drawMate()
-	love.graphics.setColor(player.c.r, player.c.g, player.c.b, 1)
+	love.graphics.setColor(player.c.r * C, player.c.g * C, player.c.b * C, 1 * C)
 	love.graphics.circle('fill', mate.x - player.x, mate.y - player.y, 9)
 end
 
 function drawPlayer()
-	love.graphics.setColor(player.c.r, player.c.g, player.c.b, 1)
+	love.graphics.setColor(player.c.r * C, player.c.g * C, player.c.b * C, 1 * C)
 	love.graphics.circle('fill', 0, 0, 9)
 end
 
 function drawFolks()
 	for i, folk in ipairs(folks.all) do
-		love.graphics.setColor(folk.c.r, folk.c.g, folk.c.b, 1)
+		love.graphics.setColor(folk.c.r * C, folk.c.g * C, folk.c.b * C, 1 * C)
 		love.graphics.circle('fill', folk.x - player.x, folk.y - player.y, 9)
 	end
 end
@@ -188,6 +189,8 @@ function spawnMate()
 end
 
 function love.load()
+	local major = love.getVersion()
+	C = major < 1 and 255 or 1
 	time = 0
 	folks = {}
 	folks.all = {}
