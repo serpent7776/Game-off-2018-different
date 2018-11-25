@@ -24,6 +24,7 @@ local banner = {
 local game_time
 local folks
 local mate
+local foundMate
 local C
 
 function drawBackground()
@@ -105,6 +106,17 @@ function checkHit(p, f)
 		local fy = dy / dd * 20
 		player.x = player.x + fx
 		player.y = player.y + fy
+	end
+end
+
+function checkFoundMate()
+	if distance(player, mate) < 20 and not foundMate then
+		local text = {
+			{1 * C, 1 * C, 1 * C, 1 * C},
+			'Congratulations',
+		}
+		makeBanner(text, 5)
+		foundMate = true
 	end
 end
 
@@ -245,6 +257,7 @@ function love.load()
 	local major = love.getVersion()
 	C = major < 1 and 255 or 1
 	game_time = 0
+	foundMate = false
 	folks = {}
 	folks.all = {}
 	spawnFolks(1500)
@@ -262,6 +275,7 @@ function love.update(dt)
 	end
 	move(mate, dt)
 	updateBanner(dt)
+	checkFoundMate()
 end
 
 function love.draw()
