@@ -188,7 +188,7 @@ function spawnFolks(n)
 end
 
 function spawnMate()
-	local r = love.math.random(1000, 1200)
+	local r = love.math.random(1500, 1600)
 	local phi = love.math.random(0, 2 * math.pi)
 	mate = {
 		x = r * math.sin(phi),
