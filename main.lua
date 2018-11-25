@@ -157,9 +157,10 @@ end
 function spawnFolk()
 	local p = player
 	local color = love.math.random(1, 3)
-	local dd = 1500
-	local x = love.math.random(p.x - dd, p.x + dd)
-	local y = love.math.random(p.y - dd, p.y + dd)
+	local r = love.math.random(200, 1500)
+	local phi = love.math.random() * math.pi * 2
+	local x = r * math.sin(phi)
+	local y = r * math.cos(phi)
 	local vx = love.math.random(-32, 32)
 	local vy = love.math.random(-32, 32)
 	if color == 1 then
