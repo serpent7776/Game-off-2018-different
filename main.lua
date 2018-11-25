@@ -213,7 +213,7 @@ end
 
 function love.update(dt)
 	time = time + dt
-	updatePlayer(dt * 0.6)
+	updatePlayer(dt * 0.3)
 	updateMate(dt)
 	move(player, dt)
 	for i, folk in ipairs(folks.all) do
