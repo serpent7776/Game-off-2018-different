@@ -440,8 +440,9 @@ function love.update(dt)
 	updatePlayer(dt * 0.3)
 	updateMate(dt)
 	move(player, dt)
+	local ut = game_time > 70 and dt or dt * 0.1
 	for i, folk in ipairs(folks.all) do
-		move(folk, dt)
+		move(folk, ut)
 		checkHit(player, folk)
 	end
 	move(mate, dt)
