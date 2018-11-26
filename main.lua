@@ -124,7 +124,7 @@ function makeBlueOnesBanner()
 	makeBanner(text, 5)
 end
 
-function makeYourRedOnesBanner()
+function makeYourRedBanner()
 	local text = {
 		rgba(1, 1, 1, 1),
 		'You want to be ',
@@ -136,7 +136,7 @@ function makeYourRedOnesBanner()
 	makeBanner(text, 5)
 end
 
-function makeYourGreenOnesBanner()
+function makeYourGreenBanner()
 	local text = {
 		rgba(1, 1, 1, 1),
 		'You do whatever ',
@@ -148,7 +148,7 @@ function makeYourGreenOnesBanner()
 	makeBanner(text, 5)
 end
 
-function makeYourBlueOnesBanner()
+function makeYourBlueBanner()
 	local text = {
 		rgba(1, 1, 1, 1),
 		'But sometimes\nYou\'re ',
@@ -185,15 +185,15 @@ function updateBanner(dt)
 	end
 	if introBannerNo == 3 and game_time > 21 then
 		introBannerNo = introBannerNo + 1
-		makeYourRedOnesBanner()
+		makeYourRedBanner()
 	end
 	if introBannerNo == 4 and game_time > 28 then
 		introBannerNo = introBannerNo + 1
-		makeYourGreenOnesBanner()
+		makeYourGreenBanner()
 	end
 	if introBannerNo == 5 and game_time > 35 then
 		introBannerNo = introBannerNo + 1
-		makeYourBlueOnesBanner()
+		makeYourBlueBanner()
 	end
 	if not banner.v then
 		return
