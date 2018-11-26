@@ -203,43 +203,43 @@ function makeCongratsBanner()
 end
 
 function updateBanner(dt)
-	if introBannerNo == 0 then
+	if not foundMate and introBannerNo == 0 then
 		introBannerNo = introBannerNo + 1
 		makeRedOnesBanner()
 	end
-	if introBannerNo == 1 and game_time > 7 then
+	if not foundMate and introBannerNo == 1 and game_time > 7 then
 		introBannerNo = introBannerNo + 1
 		makeGreenOnesBanner()
 	end
-	if introBannerNo == 2 and game_time > 14 then
+	if not foundMate and introBannerNo == 2 and game_time > 14 then
 		introBannerNo = introBannerNo + 1
 		makeBlueOnesBanner()
 	end
-	if introBannerNo == 3 and game_time > 21 then
+	if not foundMate and introBannerNo == 3 and game_time > 21 then
 		introBannerNo = introBannerNo + 1
 		makeYourRedBanner()
 	end
-	if introBannerNo == 4 and game_time > 28 then
+	if not foundMate and introBannerNo == 4 and game_time > 28 then
 		introBannerNo = introBannerNo + 1
 		makeYourGreenBanner()
 	end
-	if introBannerNo == 5 and game_time > 35 then
+	if not foundMate and introBannerNo == 5 and game_time > 35 then
 		introBannerNo = introBannerNo + 1
 		makeYourBlueBanner()
 	end
-	if introBannerNo == 6 and game_time > 42 then
+	if not foundMate and introBannerNo == 6 and game_time > 42 then
 		introBannerNo = introBannerNo + 1
 		makeCrowdBanner()
 	end
-	if introBannerNo == 7 and game_time > 49 then
+	if not foundMate and introBannerNo == 7 and game_time > 49 then
 		introBannerNo = introBannerNo + 1
 		makePlaceBanner()
 	end
-	if introBannerNo == 8 and game_time > 56 then
+	if not foundMate and introBannerNo == 8 and game_time > 56 then
 		introBannerNo = introBannerNo + 1
 		makeTheyBanner()
 	end
-	if introBannerNo == 9 and game_time > 63 then
+	if not foundMate and introBannerNo == 9 and game_time > 63 then
 		introBannerNo = introBannerNo + 1
 		makeSomeoneBanner()
 	end
