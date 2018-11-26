@@ -93,7 +93,7 @@ function makeRedOnesBanner()
 		rgba(1, 1, 1, 1),
 		'Some of them are ',
 		rgba(1, 0, 0, 1),
-		'red\n',
+		'red.\n',
 		rgba(1, 1, 1, 1),
 		'Ambitious, strong.\nThey\'re never wrong.',
 	}
@@ -105,7 +105,7 @@ function makeGreenOnesBanner()
 		rgba(1, 1, 1, 1),
 		'Some are ',
 		rgba(0, 1, 0, 1),
-		'green\n',
+		'green.\n',
 		rgba(1, 1, 1, 1),
 		'Caring, kind.\nAlways others on their mind.',
 	}
@@ -117,7 +117,7 @@ function makeBlueOnesBanner()
 		rgba(1, 1, 1, 1),
 		'Others are ',
 		rgba(0, 0, 1, 1),
-		'blue\n',
+		'blue.\n',
 		rgba(1, 1, 1, 1),
 		'Their spirit\'s low.\nEverybody seems their foe.',
 	}
@@ -129,7 +129,7 @@ function makeYourRedBanner()
 		rgba(1, 1, 1, 1),
 		'You want to be ',
 		rgba(1, 0, 0, 1),
-		'a change\n',
+		'a change.\n',
 		rgba(1, 1, 1, 1),
 		'You make your goals\nBe in your range.',
 	}
@@ -141,7 +141,7 @@ function makeYourGreenBanner()
 		rgba(1, 1, 1, 1),
 		'You do whatever ',
 		rgba(0, 1, 0, 1),
-		'you love\n',
+		'you love.\n',
 		rgba(1, 1, 1, 1),
 		'Your intentions\nPure like a dove.',
 	}
@@ -153,7 +153,7 @@ function makeYourBlueBanner()
 		rgba(1, 1, 1, 1),
 		'But sometimes\nYou\'re ',
 		rgba(0, 0, 1, 1),
-		'feeling down\n',
+		'feeling down.\n',
 		rgba(1, 1, 1, 1),
 		'Making you think\nYou\'re gonna drown.',
 	}
