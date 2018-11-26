@@ -196,7 +196,7 @@ end
 function makeSomeoneBanner()
 	local text = {
 		rgba(1, 1, 1, 1),
-		'There must be someone\nTo share this weight\nThere must be someone\nYou can relate.',
+		'There must be someone\nTo share this weight\nThere must be someone\nYou can relate.\n\nSomeone like you.',
 	}
 	makeBanner(text, 5)
 end
