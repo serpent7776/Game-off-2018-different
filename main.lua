@@ -22,6 +22,7 @@ local banner = {
 	v = false,
 }
 
+local font
 local game_time
 local folks
 local mate
@@ -180,6 +181,11 @@ function move(o, dt)
 	o.y = o.y + o.vy * dt
 end
 
+function loadFont()
+	font = love.graphics.newFont(16)
+	love.graphics.setFont(font)
+end
+
 function spawnRedFolk(x, y, vx, vy)
 	local f = {
 		x = x,
@@ -262,6 +268,7 @@ function love.load()
 	C = major < 1 and 255 or 1
 	game_time = 0
 	foundMate = false
+	loadFont()
 	folks = {}
 	folks.all = {}
 	spawnFolks(1500)
