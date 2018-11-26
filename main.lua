@@ -195,7 +195,7 @@ end
 function makeCongratsBanner()
 	local text = {
 		rgba(1, 1, 1, 1),
-		'Congratulations\n',
+		'You\'ve found a mate.\nThat makes you feel great.\n\n',
 		rgba(1, 1, 1, 1),
 		'You\'ve been pushed ' .. player.hit .. ' times',
 	}
