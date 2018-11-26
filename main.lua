@@ -31,6 +31,7 @@ local foundMate
 local introBannerNo
 local C
 local rainbow
+local sounds
 
 function drawBackground()
 	for y = 0, 9 do
@@ -302,6 +303,7 @@ function checkHit(p, f)
 		player.x = player.x + fx
 		player.y = player.y + fy
 		player.hit = player.hit + 1
+		love.audio.play(sounds.hit)
 	end
 end
 
@@ -309,6 +311,7 @@ function checkFoundMate()
 	if distance(player, mate) < 20 and not foundMate then
 		makeCongratsBanner()
 		foundMate = true
+		love.audio.play(sounds.foundMate)
 	end
 end
 
@@ -371,6 +374,12 @@ end
 function loadFont()
 	font = love.graphics.newFont(16)
 	love.graphics.setFont(font)
+end
+
+function loadSounds()
+	sounds = {}
+	sounds.hit = love.audio.newSource('hit.ogg', 'static')
+	sounds.foundMate = love.audio.newSource('found.ogg', 'static')
 end
 
 function spawnRedFolk(x, y, vx, vy)
@@ -458,6 +467,7 @@ function love.load()
 	introBannerNo = 0
 	rainbow = {0, 0, 0}
 	loadFont()
+	loadSounds()
 	folks = {}
 	folks.all = {}
 	spawnFolks(1500)
