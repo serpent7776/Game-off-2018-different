@@ -27,6 +27,7 @@ local game_time
 local folks
 local mate
 local foundMate
+local introBannerNo
 local C
 
 function drawBackground()
@@ -78,7 +79,74 @@ function updateMate(dt)
 	mate.vy = fy * 0.25
 end
 
+function rgba(r, g, b, a)
+	return {
+		r * C,
+		g * C,
+		b * C,
+		a * C,
+	}
+end
+
+function makeRedOnesBanner()
+	local text = {
+		rgba(1, 1, 1, 1),
+		'Some of them are ',
+		rgba(1, 0, 0, 1),
+		'red\n',
+		rgba(1, 1, 1, 1),
+		'Ambitious, strong.\nThey\'re never wrong.',
+	}
+	makeBanner(text, 5)
+end
+
+function makeGreenOnesBanner()
+	local text = {
+		rgba(1, 1, 1, 1),
+		'Some are ',
+		rgba(0, 1, 0, 1),
+		'green\n',
+		rgba(1, 1, 1, 1),
+		'Caring, kind.\nAlways others on their mind.',
+	}
+	makeBanner(text, 5)
+end
+
+function makeBlueOnesBanner()
+	local text = {
+		rgba(1, 1, 1, 1),
+		'Others are ',
+		rgba(0, 0, 1, 1),
+		'blue\n',
+		rgba(1, 1, 1, 1),
+		'Their spirit\'s low.\nEverybody seems their foe.',
+	}
+	makeBanner(text, 5)
+end
+
+function makeCongratsBanner()
+	local text = {
+		rgba(1, 1, 1, 1),
+		'Congratulations\n',
+		rgba(1, 1, 1, 1),
+		'You\'ve been pushed ' .. player.hit .. ' times',
+	}
+	makeBanner(text, 5)
+end
+
 function updateBanner(dt)
+	if introBannerNo == 0 then
+		introBannerNo = introBannerNo + 1
+		makeRedOnesBanner()
+	end
+	if introBannerNo == 1 and game_time > 7 then
+		introBannerNo = introBannerNo + 1
+		makeGreenOnesBanner()
+	end
+	if introBannerNo == 2 and game_time > 14 then
+		introBannerNo = introBannerNo + 1
+		makeBlueOnesBanner()
+	end
 	if not banner.v then
 		return
 	end
@@ -114,13 +182,7 @@ end
 
 function checkFoundMate()
 	if distance(player, mate) < 20 and not foundMate then
-		local text = {
-			{1 * C, 1 * C, 1 * C, 1 * C},
-			'Congratulations\n',
-			{1 * C, 1 * C, 1 * C, 1 * C},
-			'You\'ve been pushed ' .. player.hit .. ' times',
-		}
-		makeBanner(text, 5)
+		makeCongratsBanner()
 		foundMate = true
 	end
 end
@@ -268,6 +330,7 @@ function love.load()
 	C = major < 1 and 255 or 1
 	game_time = 0
 	foundMate = false
+	introBannerNo = 0
 	loadFont()
 	folks = {}
 	folks.all = {}
