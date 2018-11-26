@@ -160,6 +160,38 @@ function makeYourBlueBanner()
 	makeBanner(text, 5)
 end
 
+function makeCrowdBanner()
+	local text = {
+		rgba(1, 1, 1, 1),
+		'You found yourself\nIn the crowd.\nThere\'s lots of them.\nThere\'re so loud.',
+	}
+	makeBanner(text, 5)
+end
+
+function makePlaceBanner()
+	local text = {
+		rgba(1, 1, 1, 1),
+		'That\'s not the place\nYou want to stay.\nYou feel like\nYou went astray.',
+	}
+	makeBanner(text, 5)
+end
+
+function makeTheyBanner()
+	local text = {
+		rgba(1, 1, 1, 1),
+		'They don\'t understand,\nThey do not care.\nIf you are here,\nOr you\'re not there.',
+	}
+	makeBanner(text, 5)
+end
+
+function makeSomeoneBanner()
+	local text = {
+		rgba(1, 1, 1, 1),
+		'There must be someone\nTo share this weight\nThere must be someone\nYou can relate.',
+	}
+	makeBanner(text, 5)
+end
+
 function makeCongratsBanner()
 	local text = {
 		rgba(1, 1, 1, 1),
@@ -195,6 +227,23 @@ function updateBanner(dt)
 		introBannerNo = introBannerNo + 1
 		makeYourBlueBanner()
 	end
+	if introBannerNo == 6 and game_time > 42 then
+		introBannerNo = introBannerNo + 1
+		makeCrowdBanner()
+	end
+	if introBannerNo == 7 and game_time > 49 then
+		introBannerNo = introBannerNo + 1
+		makePlaceBanner()
+	end
+	if introBannerNo == 8 and game_time > 56 then
+		introBannerNo = introBannerNo + 1
+		makeTheyBanner()
+	end
+	if introBannerNo == 9 and game_time > 63 then
+		introBannerNo = introBannerNo + 1
+		makeSomeoneBanner()
+	end
+	--
 	if not banner.v then
 		return
 	end
