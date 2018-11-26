@@ -30,6 +30,7 @@ local mate
 local foundMate
 local introBannerNo
 local C
+local rainbow
 
 function drawBackground()
 	for y = 0, 9 do
@@ -70,9 +71,15 @@ end
 
 function updatePlayer(dt)
 	player.ct = (player.ct + dt) % 4
-	player.c.r = colour(player.ct, 1)
-	player.c.g = colour(player.ct, 2)
-	player.c.b = colour(player.ct, 3)
+	local r = colour(player.ct, 1)
+	local g = colour(player.ct, 2)
+	local b = colour(player.ct, 3)
+	player.c.r = r
+	player.c.g = g
+	player.c.b = b
+	rainbow[1] = r * C
+	rainbow[2] = g * C
+	rainbow[3] = b * C
 end
 
 function updateMate(dt)
@@ -196,7 +203,19 @@ end
 function makeSomeoneBanner()
 	local text = {
 		rgba(1, 1, 1, 1),
-		'There must be someone\nTo share this weight\nThere must be someone\nYou can relate.\n\nSomeone like you.',
+		'There must be ',
+		rainbow,
+		'someone\n',
+		rgba(1, 1, 1, 1),
+		'To share this weight\nThere must be ',
+		rainbow,
+		'someone\n',
+		rgba(1, 1, 1, 1),
+		'You can relate.\n\n',
+		rainbow,
+		'Someone ',
+		rgba(1, 1, 1, 1),
+		'like you.',
 	}
 	makeBanner(text, 5)
 end
@@ -437,6 +456,7 @@ function love.load()
 	game_time = 0
 	foundMate = false
 	introBannerNo = 0
+	rainbow = {0, 0, 0}
 	loadFont()
 	folks = {}
 	folks.all = {}
