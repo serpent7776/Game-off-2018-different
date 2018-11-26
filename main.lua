@@ -235,14 +235,14 @@ function spawnFolk()
 	local phi = love.math.random() * math.pi * 2
 	local x = r * math.sin(phi)
 	local y = r * math.cos(phi)
-	local vx = love.math.random(-32, 32)
-	local vy = love.math.random(-32, 32)
+	local vx = love.math.random(-24, 24)
+	local vy = love.math.random(-24, 24)
 	if color == 1 then
 		spawnRedFolk(x, y, vx, vy)
 	elseif color == 2 then
-		spawnGreenFolk(x, y, vx, vy)
+		spawnGreenFolk(x, y, vx * 0.75, vy * 0.75)
 	elseif color == 3 then
-		spawnBlueFolk(x, y, vx, vy)
+		spawnBlueFolk(x, y, vx * 0.4, vy * 0.4)
 	end
 end
 
