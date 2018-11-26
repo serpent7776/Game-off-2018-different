@@ -179,7 +179,7 @@ end
 function makeCrowdBanner()
 	local text = {
 		rgba(1, 1, 1, 1),
-		'You found yourself\nIn the crowd.\nThere\'s lots of them.\nThere\'re so loud.',
+		'You found yourself\nIn the crowd.\nThere\'s lots of them.\nThey\'re so loud.',
 	}
 	makeBanner(text, 5)
 end
