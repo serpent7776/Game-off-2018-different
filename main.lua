@@ -22,6 +22,7 @@ local banner = {
 	v = false,
 }
 
+local V
 local font
 local game_time
 local folks
@@ -52,7 +53,15 @@ function colour(ct, x)
 end
 
 function makeBanner(text, t)
-	banner.text = text
+	if V[1] == 0 and V[2] < 10 then
+		local tt = ''
+		for i = 1, #text, 2 do
+			tt = tt .. text[i + 1]
+		end
+		banner.text = tt
+	else
+		banner.text = text
+	end
 	banner.t = -1
 	banner.t_out = t
 	banner.a = 0
@@ -423,8 +432,8 @@ function spawnMate()
 end
 
 function love.load()
-	local major = love.getVersion()
-	C = major < 1 and 255 or 1
+	V = {love.getVersion()}
+	C = V[1] < 1 and 255 or 1
 	game_time = 0
 	foundMate = false
 	introBannerNo = 0
