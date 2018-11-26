@@ -380,6 +380,7 @@ function loadSounds()
 	sounds = {}
 	sounds.hit = love.audio.newSource('hit.ogg', 'static')
 	sounds.foundMate = love.audio.newSource('found.ogg', 'static')
+	sounds.foundMate:setVolume(0.5)
 end
 
 function spawnRedFolk(x, y, vx, vy)
